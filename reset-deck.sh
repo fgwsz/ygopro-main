@@ -12,7 +12,7 @@ fi
 cd  "$deck_path"
 git pull
 cd ../..
-rm -rf ./ygopro-ocg/deck/*
-rm -rf ./ygopro-408/deck/*
-cp -r "${deck_path}" ./ygopro-ocg/deck/
-cp -r "${deck_path}" ./ygopro-408/deck/
+rm -rf ./ygopro-ocg/deck
+rm -rf ./ygopro-408/deck
+cp -r "${deck_path}" ./ygopro-ocg/deck
+cp -r "${deck_path}" ./ygopro-408/deck
