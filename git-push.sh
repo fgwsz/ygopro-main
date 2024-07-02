@@ -5,8 +5,8 @@ if [ "$commit_info" != "q" ]; then
     git add install/ocg-ext/*
     git add install/408-ext/*
     git add install/.gitignore
-    git add ygopro-ocg/.gitignore
-    git add ygopro-408/.gitignore
+    git add -f ygopro-ocg/.gitignore
+    git add -f ygopro-408/.gitignore
     git add download-*.sh
     git add reset-*.sh
     git add update-*.sh
