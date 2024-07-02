@@ -12,6 +12,7 @@ if [ "$commit_info" != "q" ]; then
     git add update-*.sh
     git add run-*.sh
     git add git-push.sh
+    git add .gitignore
     git add README.md
     git commit -m "$commit_info"
     git push
