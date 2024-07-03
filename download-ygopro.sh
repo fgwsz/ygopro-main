@@ -8,4 +8,4 @@ ygopro_old_path="./install/${ygopro_filename}.old"
 if [[ -e "$ygopro_path" ]]; then
     mv "$ygopro_path" "$ygopro_old_path"
 fi
-curl -o "$ygopro_path" "$ygopro_download_url"
+curl -C - -o "$ygopro_path" "$ygopro_download_url"
