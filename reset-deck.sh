@@ -6,7 +6,7 @@ deck_path="${deck_root_path}${deck_repo_name}"
 
 if [[ ! -e "$deck_path" ]]; then
     cd "$deck_root_path"
-    git clone "git@github.com:fgwsz/$deck_repo_name"
+    git clone "git@github.com:fgwsz/${deck_repo_name}.git"
     cd ..
 fi
 cd  "$deck_path"

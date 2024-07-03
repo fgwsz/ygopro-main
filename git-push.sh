@@ -12,6 +12,7 @@ if [ "$commit_info" != "q" ]; then
     git add reset-*.sh
     git add update-*.sh
     git add run-*.sh
+    git add install.sh
     git add git-push.sh
     git add .gitignore
     git add README.md
