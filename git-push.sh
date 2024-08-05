@@ -8,7 +8,6 @@ if [ "$commit_info" != "q" ]; then
     git add install/.gitignore
     git add -f ygopro-ocg/.gitignore
     git add -f ygopro-408/.gitignore
-    git add download-*.sh
     git add reset-*.sh
     git add update-*.sh
     git add run-*.sh
