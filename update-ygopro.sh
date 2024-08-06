@@ -1,9 +1,8 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
-ygopro_filename="ygopro.tar.gz"
 ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
-ygopro_path="$root_path/install/$ygopro_filename"
+ygopro_path="$root_path/install/ygopro.tar.gz"
 
 if [[ -e "$ygopro_path" ]]; then
     rm -rf "$ygopro_path"
