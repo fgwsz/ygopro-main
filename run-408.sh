@@ -8,7 +8,4 @@ git pull
 cd "$root_path/ygopro-408"
 ./ygopro
 #push deck
-cd "$root_path/ygopro-408/deck"
-./push-deck.sh
-
-cd "$root_path"
+"$root_path/ygopro-408/deck/push-deck.sh"
