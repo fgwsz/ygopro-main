@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cp -r ./install/ocg-ext/* ./ygopro-ocg/
-cp -r ./install/408-ext/* ./ygopro-408/
+root_path=$(dirname "$(readlink -f "$0")")
+cp -r "$root_path/install/ocg-ext"/* "$root_path/ygopro-ocg/"
+cp -r "$root_path/install/408-ext"/* "$root_path/ygopro-408/"

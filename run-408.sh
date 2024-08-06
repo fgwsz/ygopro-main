@@ -1,14 +1,14 @@
 #!/bin/bash
 
+root_path=$(dirname "$(readlink -f "$0")")
 #pull deck
-cd ./ygopro-408/deck
+cd "$root_path/ygopro-408/deck"
 git pull
-cd ../..
 #run ygopro
-cd ./ygopro-408
+cd "$root_path/ygopro-408"
 ./ygopro
-cd ..
 #push deck
-cd ./ygopro-408/deck
+cd "$root_path/ygopro-408/deck"
 ./push-deck.sh
-cd ../..
+
+cd "$root_path"
