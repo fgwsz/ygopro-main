@@ -3,7 +3,6 @@
 root_path=$(dirname "$(readlink -f "$0")")
 super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
 super_pre_path="$root_path/install/ygopro-super-pre.ypk"
-
 if [[ -e "$super_pre_path" ]]; then
     rm -rf "$super_pre_path"
 fi
