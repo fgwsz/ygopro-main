@@ -14,16 +14,16 @@ tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
 cp -r "$root_path/install/ocg-ext"/* "$root_path/ygopro-ocg/"
 cp -r "$root_path/install/408-ext"/* "$root_path/ygopro-408/"
 #reset deck
-deck_path="$root_path/install/ygopro-deck"
-if [[ ! -e "$deck_path" ]]; then
-    cd "$deck_root_path"
+ygopro_deck_path="$root_path/install/ygopro-deck"
+if [[ ! -e "$ygopro_deck_path" ]]; then
+    cd "$root_path/install"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
 fi
-cd  "$deck_path"
+cd "$ygopro_deck_path"
 git pull
 rm -rf "$root_path/ygopro-ocg/deck"
 rm -rf "$root_path/ygopro-408/deck"
-cp -r "${deck_path}" "$root_path/ygopro-ocg/deck"
-cp -r "${deck_path}" "$root_path/ygopro-408/deck"
+cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
+cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
 #update super pre
 "$root_path/update-super-pre.sh"

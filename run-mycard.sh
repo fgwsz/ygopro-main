@@ -1,7 +1,7 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
-#download mycard-main git repo
+#check install/mycard-main
 mycard_main_path="$root_path/install/mycard-main"
 if [[ ! -e "$mycard_main_path" ]]; then
     cd "$root_path/install"
@@ -15,7 +15,7 @@ if [ ! -e "$mcpro_path" ]; then
     "$mycard_main_path/run.sh"
     exit 1
 fi
-#download ygopro-deck git repo
+#check mycard ygopro/deck
 deck_path="$mcpro_path/deck"
 if [[ ! -e "$deck_path/.git" ]]; then
     rm -rf "$deck_path"

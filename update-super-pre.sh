@@ -10,14 +10,14 @@ fi
 curl -C - -o "$super_pre_path" "$super_pre_download_url"
 #reset super pre in ygopro-ocg
 ygopro_ocg_path="$root_path/ygopro-ocg"
-cp -r "${super_pre_path}" "$ygopro_ocg_path/expansions/"
-#reset super per in ygopro-mc
-ygopro_mc_path=~/.config/MyCardLibrary/ygopro
-if [ ! -e "$ygopro_mc_path" ]; then
+cp -r "$super_pre_path" "$ygopro_ocg_path/expansions/"
+#reset super per in mycard ygopro
+mcpro_path=~/.config/MyCardLibrary/ygopro
+if [ ! -e "$mcpro_path" ]; then
     echo "Please install mycard ygopro!"
     exit 1
 fi
-if [ ! -e "$ygopro_mc_path/expansions" ]; then
-    mkdir "$ygopro_mc_path/expansions"
+if [ ! -e "$mcpro_path/expansions" ]; then
+    mkdir "$mcpro_path/expansions"
 fi
-cp -r "${super_pre_path}" "$ygopro_mc_path/expansions/"
+cp -r "$super_pre_path" "$mcpro_path/expansions/"
