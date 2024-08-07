@@ -44,6 +44,6 @@ git pull
 cd "$ygopro_ocg_path"
 ./ygopro
 #mv deck to deck/ocg/
-mv "$ygopro_ocg_path/deck"/*.ydk "$ygopro_ocg_path/deck/ocg/"
+mv "$deck_path"/*.ydk "$deck_path/ocg/"
 #push deck
 "$deck_path/push-deck.sh"

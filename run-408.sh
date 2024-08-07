@@ -42,6 +42,6 @@ git pull
 cd "$ygopro_408_path"
 ./ygopro
 #mv deck to deck/408/
-mv "$ygopro_408_path/deck"/*.ydk "$ygopro_408_path/deck/408/"
+mv "$deck_path"/*.ydk "$deck_path/408/"
 #push deck
 "$deck_path/push-deck.sh"
