@@ -21,5 +21,7 @@ git pull
 #run mycard ygopro
 cd "$mcpro_path"
 ./ygopro
+#mv deck to deck/ocg/
+mv "$mcpro_path/deck"/*.ydk "$mcpro_path/deck/ocg/"
 #push deck
 "$deck_path/push-deck.sh"

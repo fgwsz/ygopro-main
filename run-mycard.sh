@@ -28,5 +28,7 @@ cd "$deck_path"
 git pull
 #run mycard
 "$mycard_main_path/run.sh"
+#mv deck to deck/ocg/
+mv "$mcpro_path/deck"/*.ydk "$mcpro_path/deck/ocg/"
 #push deck
 "$deck_path/push-deck.sh"
