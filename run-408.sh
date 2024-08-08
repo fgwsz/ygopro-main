@@ -1,12 +1,12 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
-#check ygopro 408
+#check ygopro-408
 if [[ ! -e "$root_path/ygopro-408/ygopro" ]]; then
-    ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
     ygopro_path="$root_path/install/ygopro.tar.gz"
     #check install/ygopro
     if [[ ! -e "$ygopro_path" ]]; then
+        ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
         curl -C - -o "$ygopro_path" "$ygopro_download_url"
     fi
     #reset ygopro-408
@@ -34,14 +34,13 @@ if [[ ! -e "$deck_path/.git" ]]; then
     cd "$ygopro_408_path"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
     mv "$ygopro_408_path/ygopro-deck" "$ygopro_408_path/deck"
+else
+    cd "$deck_path"
+    git pull
 fi
-#pull deck
-cd "$deck_path"
-git pull
-#run ygopro
+#run ygopro-408
 cd "$ygopro_408_path"
 ./ygopro
-#mv deck to deck/408/
-mv "$deck_path"/*.ydk "$deck_path/408/"
 #push deck
+mv "$deck_path"/*.ydk "$deck_path/408/"
 "$deck_path/push-deck.sh"
