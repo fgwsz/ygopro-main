@@ -23,7 +23,7 @@ if [[ ! -e "$root_path/ygopro-ocg/ygopro" ]]; then
         git pull
     fi
     #reset ygopro-ocg/deck
-    mv "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
+    mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
     "$ygopro_deck_path/push-deck.sh"
     rm -rf "$root_path/ygopro-ocg/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
@@ -41,7 +41,7 @@ deck_path="$ygopro_ocg_path/deck"
 if [[ ! -e "$deck_path/.git" ]]; then
     cd "$ygopro_ocg_path"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
-    mv "$deck_path"/*.ydk "$ygopro_ocg_path/ygopro-deck/ocg/"
+    mv -f "$deck_path"/*.ydk "$ygopro_ocg_path/ygopro-deck/ocg/"
     "$ygopro_ocg_path/ygopro-deck/push-deck.sh"
     rm -rf "$deck_path"
     mv "$ygopro_ocg_path/ygopro-deck" "$ygopro_ocg_path/deck"
@@ -62,5 +62,5 @@ fi
 cd "$ygopro_ocg_path"
 ./ygopro
 #push deck
-mv "$deck_path"/*.ydk "$deck_path/ocg/"
+mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
 "$deck_path/push-deck.sh"

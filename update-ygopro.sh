@@ -22,7 +22,7 @@ else
     cd "$ygopro_deck_path"
     git pull
 fi
-mv "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
+mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
 "$ygopro_deck_path/push-deck.sh"
 rm -rf "$root_path/ygopro-ocg/deck"
 rm -rf "$root_path/ygopro-408/deck"

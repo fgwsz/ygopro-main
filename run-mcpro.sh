@@ -12,7 +12,7 @@ deck_path="$mcpro_path/deck"
 if [[ ! -e "$deck_path/.git" ]]; then
     cd "$mcpro_path"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
-    mv "$deck_path"/*.ydk "$mcpro_path/ygopro-deck/ocg/"
+    mv -f "$deck_path"/*.ydk "$mcpro_path/ygopro-deck/ocg/"
     "$mcpro_path/ygopro-deck/push-deck.sh"
     rm -rf "$deck_path"
     mv "$mcpro_path/ygopro-deck" "$mcpro_path/deck"
@@ -36,5 +36,5 @@ fi
 cd "$mcpro_path"
 ./ygopro
 #push deck
-mv "$deck_path"/*.ydk "$deck_path/ocg/"
+mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
 "$deck_path/push-deck.sh"

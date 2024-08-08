@@ -42,5 +42,5 @@ fi
 cd "$ygopro_408_path"
 ./ygopro
 #push deck
-mv "$deck_path"/*.ydk "$deck_path/408/"
+mv -f "$deck_path"/*.ydk "$deck_path/408/"
 "$deck_path/push-deck.sh"
