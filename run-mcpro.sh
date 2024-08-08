@@ -21,6 +21,9 @@ else
     git pull
 fi
 #check mycard ygopro/super pre
+if [ ! -e "$mcpro_path/expansions" ]; then
+    mkdir "$mcpro_path/expansions"
+fi
 if [[ ! -e "$mcpro_path/expansions/ygopro-super-pre.ypk" ]]; then
     super_pre_path="$root_path/install/ygopro-super-pre.ypk"
     if [[ ! -e "$super_pre_path" ]]; then
