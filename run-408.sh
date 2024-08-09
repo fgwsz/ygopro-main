@@ -7,7 +7,15 @@ if [[ ! -e "$root_path/ygopro-408/ygopro" ]]; then
     #check install/ygopro
     if [[ ! -e "$ygopro_path" ]]; then
         ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
-        curl -C - -o "$ygopro_path" "$ygopro_download_url"
+        while true; do
+            curl -C - -o "$ygopro_path" "$ygopro_download_url"
+            if [ $? -eq 0 ]; then
+                break
+            fi
+            if [[ -e "$ygopro_path" ]]; then
+                rm -rf "$ygopro_path"
+            fi
+        done
     fi
     #reset ygopro-408
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"

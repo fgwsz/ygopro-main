@@ -3,11 +3,16 @@
 #download ygopro
 root_path=$(dirname "$(readlink -f "$0")")
 ygopro_path="$root_path/install/ygopro.tar.gz"
-if [[ -e "$ygopro_path" ]]; then
-    rm -rf "$ygopro_path"
-fi
 ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
-curl -C - -o "$ygopro_path" "$ygopro_download_url"
+while true; do
+    if [[ -e "$ygopro_path" ]]; then
+        rm -rf "$ygopro_path"
+    fi
+    curl -C - -o "$ygopro_path" "$ygopro_download_url"
+    if [ $? -eq 0 ]; then
+        break
+    fi
+done
 tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
 tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
 #reset ext

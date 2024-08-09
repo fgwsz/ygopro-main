@@ -29,14 +29,22 @@ else
     git pull
 fi
 #check mycard ygopro/super pre
-if [ ! -e "$mcpro_path/expansions" ]; then
-    mkdir "$mcpro_path/expansions"
-fi
 if [[ ! -e "$mcpro_path/expansions/ygopro-super-pre.ypk" ]]; then
     super_pre_path="$root_path/install/ygopro-super-pre.ypk"
     if [[ ! -e "$super_pre_path" ]]; then
         super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
-        curl -C - -o "$super_pre_path" "$super_pre_download_url"
+        while true; do
+            curl -C - -o "$super_pre_path" "$super_pre_download_url"
+            if [ $? -eq 0 ]; then
+                break
+            fi
+            if [[ -e "$super_pre_path" ]]; then
+                rm -rf "$super_pre_path"
+            fi
+        done
+    fi
+    if [ ! -e "$mcpro_path/expansions" ]; then
+        mkdir "$mcpro_path/expansions"
     fi
     cp "$super_pre_path" "$mcpro_path/expansions/"
 fi
