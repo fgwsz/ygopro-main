@@ -35,6 +35,6 @@ YGOPro & MyCard manager in linux system.
 + 自动安装到`ygopro-ocg/ygopro`
 + 自动安装到`mycard ygopro`
 ## `update-ygopro.sh`
-更新`ygopro`大版本  
+更新`ygopro`版本  
 + 自动更新到`ygopro-ocg/ygopro`
 + 自动更新到`ygopro-408/ygopro`
