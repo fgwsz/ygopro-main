@@ -40,6 +40,8 @@ if [[ ! -e "$mcpro_path/expansions/ygopro-super-pre.ypk" ]]; then
     fi
     cp "$super_pre_path" "$mcpro_path/expansions/"
 fi
+#reset mycard ygopro/ext
+cp -r "$root_path/install/mcpro-ext"/* "$mcpro_path/"
 #run mycard ygopro
 cd "$mcpro_path"
 ./ygopro

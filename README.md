@@ -20,7 +20,6 @@ YGOPro & MyCard manager in linux system.
 + 自动校检`mycard`完整性(若未安装则自动下载安装)  
     - `mycard`远程仓库<https://github.com/fgwsz/mycard-main>  
 + 若已使用`mycard`客户端安装了`mycard ygopro`  
-    - 自动安装`mcpro-ext`保持配置信息  
     - 自动同步`deck/`文件内容到远程仓库  
         + `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
     - 自动安装`ygopro-super-pre.ypk`萌卡超先行补丁  
@@ -30,8 +29,6 @@ YGOPro & MyCard manager in linux system.
 + 自动同步`deck/`文件内容到远程仓库  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 自动安装`ygopro-super-pre.ypk`萌卡超先行补丁  
-## `reset-mcpro-ext.sh`
-重置`mycard ygopro`配置信息为`mcpro-ext`内容  
 ## `update-super-pre.sh`
 更新`ygopro-super-pre.ypk`萌卡超先行补丁  
 + 自动安装到`ygopro-ocg/ygopro`
