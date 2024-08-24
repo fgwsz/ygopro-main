@@ -15,12 +15,16 @@ if [ ! -e "$mcpro_path" ]; then
     "$mycard_main_path/run.sh"
     exit 1
 fi
+#update super pre
+"$root_path/update-super-pre.sh"
 #check mycard ygopro/deck
 deck_path="$mcpro_path/deck"
 if [[ ! -e "$deck_path/.git" ]]; then
     cd "$mcpro_path"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
-    mv -f "$deck_path"/*.ydk "$mcpro_path/ygopro-deck/ocg/"
+    if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
+        mv -f "$deck_path"/*.ydk "$mcpro_path/ygopro-deck/ocg/"
+    fi
     "$mcpro_path/ygopro-deck/push-deck.sh"
     rm -rf "$deck_path"
     mv "$mcpro_path/ygopro-deck" "$mcpro_path/deck"
@@ -28,28 +32,10 @@ else
     cd "$deck_path"
     git pull
 fi
-#check mycard ygopro/super pre
-if [[ ! -e "$mcpro_path/expansions/ygopro-super-pre.ypk" ]]; then
-    super_pre_path="$root_path/install/ygopro-super-pre.ypk"
-    if [[ ! -e "$super_pre_path" ]]; then
-        super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
-        while true; do
-            curl -C - -o "$super_pre_path" "$super_pre_download_url"
-            if [ $? -eq 0 ]; then
-                break
-            fi
-            if [[ -e "$super_pre_path" ]]; then
-                rm -rf "$super_pre_path"
-            fi
-        done
-    fi
-    if [ ! -e "$mcpro_path/expansions" ]; then
-        mkdir "$mcpro_path/expansions"
-    fi
-    cp "$super_pre_path" "$mcpro_path/expansions/"
-fi
 #run mycard
 "$mycard_main_path/run.sh"
 #push deck
-mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
+if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
+    mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
+fi
 "$deck_path/push-deck.sh"
