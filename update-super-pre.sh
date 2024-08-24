@@ -5,7 +5,6 @@ super_pre_path="$root_path/install/ygopro-super-pre.ypk"
 super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
 super_pre_remote_size=$(curl -sI "$super_pre_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
 download_flag=false
-
 #check remote supre pre size
 if [ -z "$super_pre_remote_size" ]; then
     download_flag=true

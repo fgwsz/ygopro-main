@@ -1,12 +1,10 @@
 #!/bin/bash
 
-#download ygopro
 root_path=$(dirname "$(readlink -f "$0")")
 ygopro_path="$root_path/install/ygopro.tar.gz"
 ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
 ygopro_remote_size=$(curl -sI "$ygopro_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
 download_flag=false
-
 #check remote ygopro size
 if [ -z "$ygopro_remote_size" ]; then
     download_flag=true
@@ -54,10 +52,48 @@ if [ $download_flag = true ]; then
     if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
         mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
     fi 
-    "$ygopro_deck_path/push-deck.sh"
     rm -rf "$root_path/ygopro-ocg/deck"
     rm -rf "$root_path/ygopro-408/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
+    cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
+    "$ygopro_deck_path/push-deck.sh"
+fi
+#check ygopro ocg
+if [ ! -e "$root_path/ygopro-ocg/ygopro" ]; then
+    tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
+    #reset ext
+    cp -r "$root_path/install/ocg-ext"/* "$root_path/ygopro-ocg/"
+    #reset deck
+    ygopro_deck_path="$root_path/install/ygopro-deck"
+    if [[ ! -e "$ygopro_deck_path" ]]; then
+        cd "$root_path/install"
+        git clone "git@github.com:fgwsz/ygopro-deck.git"
+    else
+        cd "$ygopro_deck_path"
+        git pull
+    fi
+    if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
+        mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
+    fi 
+    "$ygopro_deck_path/push-deck.sh"
+    rm -rf "$root_path/ygopro-ocg/deck"
+    cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
+fi
+#check ygopro 408
+if [ ! -e "$root_path/ygopro-408/ygopro" ]; then
+    tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
+    #reset ext
+    cp -r "$root_path/install/408-ext"/* "$root_path/ygopro-408/"
+    #reset deck
+    ygopro_deck_path="$root_path/install/ygopro-deck"
+    if [[ ! -e "$ygopro_deck_path" ]]; then
+        cd "$root_path/install"
+        git clone "git@github.com:fgwsz/ygopro-deck.git"
+    else
+        cd "$ygopro_deck_path"
+        git pull
+    fi
+    rm -rf "$root_path/ygopro-408/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
 fi
 #update super pre
