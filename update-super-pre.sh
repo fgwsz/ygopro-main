@@ -36,6 +36,7 @@ if [ $download_flag = true ]; then
         fi
     done
 fi
+super_pre_size=$(stat -c%s "$super_pre_path")
 #update ocg/super pre
 ygopro_ocg_path="$root_path/ygopro-ocg"
 if [ ! -e "$ygopro_ocg_path/expansions" ]; then
