@@ -37,9 +37,11 @@ if [ $download_flag = true ]; then
     done
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
+    tar -zxvf "$ygopro_path" -C "$root_path/ygopro-2011_11_11/"
     #reset ext
     cp -r "$root_path/install/ocg-ext"/* "$root_path/ygopro-ocg/"
     cp -r "$root_path/install/408-ext"/* "$root_path/ygopro-408/"
+    cp -r "$root_path/install/2011_11_11-ext"/* "$root_path/ygopro-2011_11_11/"
     #reset deck
     ygopro_deck_path="$root_path/install/ygopro-deck"
     if [[ ! -e "$ygopro_deck_path" ]]; then
@@ -54,8 +56,10 @@ if [ $download_flag = true ]; then
     fi 
     rm -rf "$root_path/ygopro-ocg/deck"
     rm -rf "$root_path/ygopro-408/deck"
+    rm -rf "$root_path/ygopro-2011_11_11/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
+    cp -r "$ygopro_deck_path" "$root_path/ygopro-2011_11_11/deck"
     "$ygopro_deck_path/push-deck.sh"
 fi
 #check ygopro ocg
@@ -95,6 +99,23 @@ if [ ! -e "$root_path/ygopro-408/ygopro" ]; then
     fi
     rm -rf "$root_path/ygopro-408/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
+fi
+#check ygopro 2011_11_11
+if [ ! -e "$root_path/ygopro-2011_11_11/ygopro" ]; then
+    tar -zxvf "$ygopro_path" -C "$root_path/ygopro-2011_11_11/"
+    #reset ext
+    cp -r "$root_path/install/2011_11_11-ext"/* "$root_path/ygopro-2011_11_11/"
+    #reset deck
+    ygopro_deck_path="$root_path/install/ygopro-deck"
+    if [[ ! -e "$ygopro_deck_path" ]]; then
+        cd "$root_path/install"
+        git clone "git@github.com:fgwsz/ygopro-deck.git"
+    else
+        cd "$ygopro_deck_path"
+        git pull
+    fi
+    rm -rf "$root_path/ygopro-2011_11_11/deck"
+    cp -r "$ygopro_deck_path" "$root_path/ygopro-2011_11_11/deck"
 fi
 #update super pre
 "$root_path/update-super-pre.sh"

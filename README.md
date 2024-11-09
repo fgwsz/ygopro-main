@@ -15,6 +15,12 @@ YGOPro & MyCard manager in linux system.
 + 自动同步`deck`远程仓库内容到`deck/`文件夹  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 运行`ygopro-408/ygopro`  
+## `run-2011_11_11.sh`
++ 自动安装/更新`ygopro`  
++ 自动安装`2011_11_11-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 运行`ygopro-2011_11_11/ygopro`  
 ## `run-mycard.sh`
 + 自动校检`mycard`完整性(若未安装则自动下载安装)  
     - `mycard`远程仓库<https://github.com/fgwsz/mycard-main>  
@@ -36,12 +42,15 @@ YGOPro & MyCard manager in linux system.
 ### 安装/更新`ygopro`
 + 自动安装/更新`ygopro`到`ygopro-ocg`  
 + 自动安装/更新`ygopro`到`ygopro-408`  
++ 自动安装/更新`ygopro`到`ygopro-2011_11_11`  
 ### 安装配置信息
 + 自动安装`ocg-ext`配置信息到`ygopro-ocg`  
 + 自动安装`408-ext`配置信息到`ygopro-408`  
++ 自动安装`408-ext`配置信息到`ygopro-2011_11_11`  
 ### 同步卡组信息
 + 自动同步`deck`远程仓库内容到`ygopro-ocg/deck/`文件夹  
 + 自动同步`deck`远程仓库内容到`ygopro-408/deck/`文件夹  
++ 自动同步`deck`远程仓库内容到`ygopro-2011_11_11/deck/`文件夹  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 ### 安装/更新萌卡超先行卡补丁
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
