@@ -13,14 +13,14 @@ if [[ ! -e "$deck_path/.git" ]]; then
     mv "$ygopro_2011_11_11_path/ygopro-deck" "$ygopro_2011_11_11_path/deck"
 else
     cd "$deck_path"
-    git fetch origin
-    git reset --hard origin/main
+    git pull
+    "$deck_path/pull-deck.sh"
 fi
 #run ygopro-2011_11_11
 cd "$ygopro_2011_11_11_path"
 ./ygopro
-#update deck
+#push deck
 if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
     mv -f "$deck_path"/*.ydk "$deck_path/2011_11_11/"
 fi
-"$deck_path/update-deck.sh"
+"$deck_path/push-deck.sh"
