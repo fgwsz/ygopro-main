@@ -20,5 +20,5 @@ if [ "$commit_info" != "q" ]; then
     git add .gitignore
     git add README.md
     git commit -m "$commit_info"
-    git push
+    git push --force
 fi

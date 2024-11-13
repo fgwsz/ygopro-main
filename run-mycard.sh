@@ -30,12 +30,13 @@ if [[ ! -e "$deck_path/.git" ]]; then
     mv "$mcpro_path/ygopro-deck" "$mcpro_path/deck"
 else
     cd "$deck_path"
-    git pull
+    git fetch origin
+    git reset --hard origin/main
 fi
 #run mycard
 "$mycard_main_path/run.sh"
-#push deck
+#update deck
 if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
     mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
 fi
-"$deck_path/push-deck.sh"
+"$deck_path/update-deck.sh"

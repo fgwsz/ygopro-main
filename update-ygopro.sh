@@ -49,7 +49,8 @@ if [ $download_flag = true ]; then
         git clone "git@github.com:fgwsz/ygopro-deck.git"
     else
         cd "$ygopro_deck_path"
-        git pull
+        git fetch origin
+        git reset --hard origin/main
     fi
     if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
         mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
@@ -74,7 +75,8 @@ if [ ! -e "$root_path/ygopro-ocg/ygopro" ]; then
         git clone "git@github.com:fgwsz/ygopro-deck.git"
     else
         cd "$ygopro_deck_path"
-        git pull
+        git fetch origin
+        git reset --hard origin/main
     fi
     if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
         mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
@@ -95,7 +97,8 @@ if [ ! -e "$root_path/ygopro-408/ygopro" ]; then
         git clone "git@github.com:fgwsz/ygopro-deck.git"
     else
         cd "$ygopro_deck_path"
-        git pull
+        git fetch origin
+        git reset --hard origin/main
     fi
     rm -rf "$root_path/ygopro-408/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
@@ -112,7 +115,8 @@ if [ ! -e "$root_path/ygopro-2011_11_11/ygopro" ]; then
         git clone "git@github.com:fgwsz/ygopro-deck.git"
     else
         cd "$ygopro_deck_path"
-        git pull
+        git fetch origin
+        git reset --hard origin/main
     fi
     rm -rf "$root_path/ygopro-2011_11_11/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-2011_11_11/deck"
