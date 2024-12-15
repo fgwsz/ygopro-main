@@ -52,9 +52,6 @@ if [ $download_flag = true ]; then
         git pull
         "$ygopro_deck_path/pull-deck.sh"
     fi
-    if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
-        mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
-    fi 
     rm -rf "$root_path/ygopro-ocg/deck"
     rm -rf "$root_path/ygopro-408/deck"
     rm -rf "$root_path/ygopro-2011_11_11/deck"
@@ -78,10 +75,6 @@ if [ ! -e "$root_path/ygopro-ocg/ygopro" ]; then
         git pull
         "$ygopro_deck_path/pull-deck.sh"
     fi
-    if find "$root_path/ygopro-ocg/deck" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
-        mv -f "$root_path/ygopro-ocg/deck"/*.ydk "$ygopro_deck_path/ocg/"
-    fi 
-    "$ygopro_deck_path/push-deck.sh"
     rm -rf "$root_path/ygopro-ocg/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
 fi

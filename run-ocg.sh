@@ -7,13 +7,9 @@ root_path=$(dirname "$(readlink -f "$0")")
 ygopro_ocg_path="$root_path/ygopro-ocg"
 deck_path="$ygopro_ocg_path/deck"
 if [[ ! -e "$deck_path/.git" ]]; then
+    rm -rf "$deck_path"
     cd "$ygopro_ocg_path"
     git clone "git@github.com:fgwsz/ygopro-deck.git"
-    if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
-        mv -f "$deck_path"/*.ydk "$ygopro_ocg_path/ygopro-deck/ocg/"
-    fi
-    "$ygopro_ocg_path/ygopro-deck/push-deck.sh"
-    rm -rf "$deck_path"
     mv "$ygopro_ocg_path/ygopro-deck" "$ygopro_ocg_path/deck"
 else
     cd "$deck_path"
