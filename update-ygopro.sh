@@ -58,7 +58,6 @@ if [ $download_flag = true ]; then
     cp -r "$ygopro_deck_path" "$root_path/ygopro-ocg/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-408/deck"
     cp -r "$ygopro_deck_path" "$root_path/ygopro-2011_11_11/deck"
-    "$ygopro_deck_path/push-deck.sh"
 fi
 #check ygopro ocg
 if [ ! -e "$root_path/ygopro-ocg/ygopro" ]; then
