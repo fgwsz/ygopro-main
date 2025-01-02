@@ -30,7 +30,9 @@ if [ $download_flag = true ]; then
         if [[ -e "$ygopro_path" ]]; then
             rm -rf "$ygopro_path"
         fi
-        curl -C - -o "$ygopro_path" "$ygopro_download_url"
+        #Why curl use --http1.1?
+        #Fix:curl: (92) HTTP/2 stream 0 was not closed cleanly: INTERNAL_ERROR (err 2)
+        curl --http1.1 -C - -o "$ygopro_path" "$ygopro_download_url"
         if [ $? -eq 0 ]; then
             break
         fi
