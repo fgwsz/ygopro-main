@@ -31,7 +31,7 @@ if [ $download_flag = true ]; then
         rm -rf "$super_pre_path"
     fi
     cd "$root_path"
-    wget -t -O "$super_pre_filename" "$super_pre_download_url"
+    wget -t inf "$super_pre_download_url"
     mv "$root_path/$super_pre_filename" "$super_pre_path"
 fi
 super_pre_size=$(stat -c%s "$super_pre_path")
