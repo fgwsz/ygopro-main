@@ -32,7 +32,7 @@ if [ $download_flag = true ]; then
     while true; do
         #Why --http1.1?
         #Fix:curl: (92) HTTP/2 stream 0 was not closed cleanly: INTERNAL_ERROR (err 2)
-        curl -C - --http1.1 --retry 999 --retry-delay 2 -o "$super_pre_path" "$super_pre_download_url"
+        curl --http1.1 -C - --retry 999 --retry-delay 2 -o "$super_pre_path" "$super_pre_download_url"
         if [ $? -eq 0 ]; then
             break
         fi
