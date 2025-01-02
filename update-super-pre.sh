@@ -2,6 +2,7 @@
 
 root_path=$(dirname "$(readlink -f "$0")")
 super_pre_path="$root_path/install/ygopro-super-pre.ypk"
+super_pre_filename="ygopro-super-pre.ypk"
 super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
 super_pre_remote_size=$(curl -sI "$super_pre_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
 download_flag=false
@@ -29,16 +30,9 @@ if [ $download_flag = true ]; then
     if [[ -e "$super_pre_path" ]]; then
         rm -rf "$super_pre_path"
     fi
-    while true; do
-        #Why --http1.1?
-        #Fix:curl: (92) HTTP/2 stream 0 was not closed cleanly: INTERNAL_ERROR (err 2)
-        #Why curl use --L?
-        #Fix:curl: (33) HTTP server doesn't seem to support byte ranges. Cannot resume.
-        curl --http1.1 -L -C - --retry 999 --retry-delay 2 -o "$super_pre_path" "$super_pre_download_url"
-        if [ $? -eq 0 ]; then
-            break
-        fi
-    done
+    cd "$root_path"
+    wget -t -O "$super_pre_filename" "$super_pre_download_url"
+    mv "$root_path/$super_pre_filename" "$super_pre_path"
 fi
 super_pre_size=$(stat -c%s "$super_pre_path")
 #update ocg/super pre
