@@ -26,10 +26,10 @@ else
 fi
 #update install/ygopro
 if [ $download_flag = true ]; then
+    if [[ -e "$ygopro_path" ]]; then
+        rm -rf "$ygopro_path"
+    fi
     while true; do
-        if [[ -e "$ygopro_path" ]]; then
-            rm -rf "$ygopro_path"
-        fi
         #Why curl use --http1.1?
         #Fix:curl: (92) HTTP/2 stream 0 was not closed cleanly: INTERNAL_ERROR (err 2)
         curl --http1.1 -C - -o "$ygopro_path" "$ygopro_download_url"

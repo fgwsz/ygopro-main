@@ -26,10 +26,10 @@ else
 fi
 #update install/super pre
 if [ $download_flag = true ]; then
+    if [[ -e "$super_pre_path" ]]; then
+        rm -rf "$super_pre_path"
+    fi
     while true; do
-        if [[ -e "$super_pre_path" ]]; then
-            rm -rf "$super_pre_path"
-        fi
         #Why --http1.1?
         #Fix:curl: (92) HTTP/2 stream 0 was not closed cleanly: INTERNAL_ERROR (err 2)
         curl --http1.1 -C - -o "$super_pre_path" "$super_pre_download_url"
