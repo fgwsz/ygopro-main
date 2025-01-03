@@ -39,7 +39,7 @@ if [ $download_flag = true ]; then
         if [[ -e "$ygopro_path" ]]; then
             rm -rf "$ygopro_path"
         fi
-        axel -o "$ygopro_filename" "$ygopro_download_url"
+        axel -n 20 -o "$ygopro_filename" "$ygopro_download_url"
         if [ $? -eq 0 ]; then
             break
         fi
