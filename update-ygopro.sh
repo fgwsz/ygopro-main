@@ -1,9 +1,7 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
-ygopro_download_dir_path="$root_path/install"
-ygopro_filename="ygopro.tar.gz"
-ygopro_path="$ygopro_download_dir_path/$ygopro_filename"
+ygopro_path="$root_path/install/ygopro.tar.gz"
 ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
 ygopro_remote_size=$(curl -sI "$ygopro_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
 download_flag=false
@@ -34,17 +32,15 @@ while true; do
 done
 #update install/ygopro
 if [ $download_flag = true ]; then
-    cd "$ygopro_download_dir_path"
     while true; do
         if [[ -e "$ygopro_path" ]]; then
             rm -rf "$ygopro_path"
         fi
-        axel -n 20 -o "$ygopro_filename" "$ygopro_download_url"
+        axel -n 20 -o "$ygopro_path" "$ygopro_download_url"
         if [ $? -eq 0 ]; then
             break
         fi
     done
-    cd "$root_path"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-2011_11_11/"
