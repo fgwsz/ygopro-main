@@ -28,11 +28,16 @@ else
 fi
 #update install/ygopro
 if [ $download_flag = true ]; then
-    if [[ -e "$ygopro_path" ]]; then
-        rm -rf "$ygopro_path"
-    fi
     cd "$ygopro_download_dir_path"
-    wget "$ygopro_download_url" -t inf -O "$ygopro_filename"
+    while true; do
+        if [[ -e "$ygopro_path" ]]; then
+            rm -rf "$ygopro_path"
+        fi
+        wget "$ygopro_download_url" -t 2 -O "$ygopro_filename"
+        if [ $? -eq 0 ]; then
+            break
+        fi
+    done
     cd "$root_path"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"

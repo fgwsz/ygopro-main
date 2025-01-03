@@ -28,11 +28,16 @@ else
 fi
 #update install/super pre
 if [ $download_flag = true ]; then
-    if [[ -e "$super_pre_path" ]]; then
-        rm -rf "$super_pre_path"
-    fi
     cd "$super_pre_download_dir_path"
-    wget "$super_pre_download_url" -t inf -O "$super_pre_filename"
+    while true; do
+        if [[ -e "$super_pre_path" ]]; then
+            rm -rf "$super_pre_path"
+        fi
+        wget "$super_pre_download_url" -t 2 -O "$super_pre_filename"
+        if [ $? -eq 0 ]; then
+            break
+        fi
+    done
     cd "$root_path"
 fi
 super_pre_size=$(stat -c%s "$super_pre_path")
