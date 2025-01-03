@@ -8,24 +8,30 @@ ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-m
 ygopro_remote_size=$(curl -sI "$ygopro_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
 download_flag=false
 #check remote ygopro size
-if [ -z "$ygopro_remote_size" ]; then
-    download_flag=true
-    echo "Unable to retrieve the size of the remote ygopro file."
-fi
-ygopro_remote_size=${ygopro_remote_size% }
-if [ -f "$ygopro_path" ]; then
-    ygopro_size=$(stat -c%s "$ygopro_path")
-else
-    download_flag=true
-    echo "install/ygopro file does not exist."
-fi
-if [ "$ygopro_remote_size" -eq "$ygopro_size" ]; then
-    download_flag=false
-    echo "install/ygopro is up to date."
-else
-    download_flag=true
-    echo "ygopro has updates available."
-fi
+while true; do
+    if [ -z "$ygopro_remote_size" ]; then
+        download_flag=true
+        echo "Unable to retrieve the size of the remote ygopro file."
+        break
+    fi
+    ygopro_remote_size=${ygopro_remote_size% }
+    if [ -f "$ygopro_path" ]; then
+        ygopro_size=$(stat -c%s "$ygopro_path")
+    else
+        download_flag=true
+        echo "install/ygopro file does not exist."
+        break
+    fi
+    if [ "$ygopro_remote_size" -eq "$ygopro_size" ]; then
+        download_flag=false
+        echo "install/ygopro is up to date."
+        break
+    else
+        download_flag=true
+        echo "ygopro has updates available."
+        break
+    fi
+done
 #update install/ygopro
 if [ $download_flag = true ]; then
     cd "$ygopro_download_dir_path"
@@ -33,7 +39,7 @@ if [ $download_flag = true ]; then
         if [[ -e "$ygopro_path" ]]; then
             rm -rf "$ygopro_path"
         fi
-        wget "$ygopro_download_url" -t 2 -O "$ygopro_filename"
+        axel -o "$ygopro_filename" "$ygopro_download_url"
         if [ $? -eq 0 ]; then
             break
         fi
