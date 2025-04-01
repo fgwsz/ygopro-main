@@ -66,8 +66,19 @@ YGOPro & MyCard manager in linux system.
 ```bash
 ./ygopro: error while loading shared libraries: libIrrKlang.so: cannot open shared object file: No such file or directory
 ```
+问题:  
+缺少`libIrrKlang.so`动态库文件.  
+解决方式:  
+在`mycard ygopro`介绍页下拉菜单项目里面的`koishipro`点击安装即可.  
 2025/04/01
 使用`mycard`卸载`mycard ygopro`后重新安装`mycard ygopro`时,下载报错:  
 ```bash
 request to http://127.0.0.1:6860/jsonrpc failed,reason:connect ECONNREFUSED 127.0.0.1:6860
+```
+问题:  
+下面来自`mycard v3.0.71`源码的搜索信息:  
+```bash
+app/download.service.ts
+96:    // 强制指定IPv4，接到过一个反馈无法监听v6的。默认的host值是localhost，会连v6。
+97:    aria2 = new Aria2({ host: '127.0.0.1', port: 6860, secret: 'mycard' });
 ```
