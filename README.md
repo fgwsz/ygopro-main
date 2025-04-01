@@ -66,3 +66,8 @@ YGOPro & MyCard manager in linux system.
 ```bash
 ./ygopro: error while loading shared libraries: libIrrKlang.so: cannot open shared object file: No such file or directory
 ```
+2025/04/01
+使用`mycard`卸载后重新安装时,下载报错:  
+```bash
+request to http://127.0.0.1:6860/jsonrpc failed,reason:connect ECONNREFUSED 127.0.0.1:6860
+```
