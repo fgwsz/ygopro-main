@@ -61,6 +61,7 @@ YGOPro & MyCard manager in linux system.
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`mycard ygopro`  
 ## 已知问题
+### [o] 0001
 2025/04/01  
 (使用`mycard`卸载`mycard ygopro`后重新安装的)`mycard ygopro`运行错误:  
 ```bash
@@ -70,7 +71,8 @@ YGOPro & MyCard manager in linux system.
 缺少`libIrrKlang.so`动态库文件.  
 解决方式:  
 在`mycard ygopro`介绍页下拉菜单项目里面的`koishipro`点击安装即可.  
-2025/04/01
+### [x] 0002
+2025/04/01  
 使用`mycard`卸载`mycard ygopro`后重新安装`mycard ygopro`时,下载报错:  
 ```bash
 request to http://127.0.0.1:6860/jsonrpc failed,reason:connect ECONNREFUSED 127.0.0.1:6860
