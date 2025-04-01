@@ -62,7 +62,7 @@ YGOPro & MyCard manager in linux system.
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`mycard ygopro`  
 ## 已知问题
 2025/04/01  
-(使用mycard卸载后重新安装的)mycard ygopro 运行错误:  
+(使用`mycard`卸载后重新安装的)`mycard ygopro`运行错误:  
 ```bash
 ./ygopro: error while loading shared libraries: libIrrKlang.so: cannot open shared object file: No such file or directory
 ```
