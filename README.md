@@ -70,7 +70,10 @@ YGOPro & MyCard manager in linux system.
 问题:  
 缺少`libIrrKlang.so`动态库文件.  
 解决方式:  
-在`mycard ygopro`介绍页下拉菜单项目里面的`koishipro`点击安装即可.  
+联系了`mycard`的开发者,得到讯息是在最近的一次更新打包的过程中,  
+`linux`版本的`mycard ygopro`打包时遗漏了`libIrrKlang.so`.  
+于是我尝试安装了`mycard`提供的其他版本的`ygopro`作为代替,  
+在`mycard ygopro`介绍页下拉菜单项目里面找到`koishipro`点击安装即可.  
 ### [x] 0002
 2025/04/01  
 使用`mycard`卸载`mycard ygopro`后重新安装`mycard ygopro`时,下载报错:  
