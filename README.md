@@ -81,6 +81,59 @@ request to http://127.0.0.1:6860/jsonrpc failed,reason:connect ECONNREFUSED 127.
 下面来自`mycard v3.0.71`源码的搜索信息:  
 ```bash
 app/download.service.ts
-96:    // 强制指定IPv4，接到过一个反馈无法监听v6的。默认的host值是localhost，会连v6。
+96:    // 强制指定IPv4,接到过一个反馈无法监听v6的.默认的host值是localhost,会连v6.
 97:    aria2 = new Aria2({ host: '127.0.0.1', port: 6860, secret: 'mycard' });
 ```
+解决方式:  
+`aria2`是一个外部的磁力链接下载工具,  
+首先来验证一下`aria2`是否能够正常运行.  
+`aria2c`是`aria2`下载器的控制台命令,在运行时出现了如下问题:  
+```bash
+$ aria2c
+Exception caughtException: [download_helper.cc:562] errorCode=1 Failed to open the file ~/.config/aria2/aria2.session, cause: File not found or it is a directory
+```
+显示`~/.config/aria2/aria2.session`文件缺失,  
+我来验证一下这个文件是否是真实存在的.  
+```bash
+$ ls -ld ~/.config/aria2/aria2.session
+-rw-rw-r-- 1 fgwsz fgwsz 0 Apr  2 21:43 /home/fgwsz/.config/aria2/aria2.session
+```
+这个文件是真实存在的,根本不可能缺失,那么问题出在了哪里呢?  
+`aria2`启动时会加载一系列配置文件,  
+这些配置文件通常在存放在`~/.config/aria2/`这个文件路径下.  
+```bash
+$ tree ~/.config/aria2/
+/home/fgwsz/.config/aria2/
+├── aria2.conf
+├── aria2.log
+└── aria2.session
+0 directories, 3 files
+```
+`aria2.conf`是配置文件,  
+`aria2.log`是日志文件,  
+`aria2.session`是下载器进度保存文件,  
+`aria2`启动的过程中会从这个文件夹读取下载参数和配置.  
+当上述文件缺失/配置不正确的时候,`aria2`会无法启动,下载服务也就无法进行  
+答案就是`~`这个用户目录文件夹的通配符,
+`aria2`可能不认识,它无法将其转换成正确的用户目录文件全路径,  
+在`~/.config/aria2/aria2.conf`这个配置文件中有一系列的文件路径配置选项,  
+我们来查看一下:  
+```bash
+# 日志文件路径
+log=~/.config/aria2/aria2.log
+# 下载目录
+dir=~/Downloads
+# 输入文件路径(记录下载历史)
+input-file=~/.config/aria2/aria2.session
+# 输出文件路径(保存下载历史)
+save-session=~/.config/aria2/aria2.session
+```
+果然是`~`丛生,我们尝试将这些文件路径里面的`~`全部替换为用户目录的全路径,  
+然后重新运行`aria2c`  
+```bash
+$ aria2c --version
+aria2 version 1.36.0
+Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
+```
+这下运行正常了,重新打开`mycard`,找到`ygopro`介绍页,点击`下载`按键,  
+此时发现可以正常下载了.  
