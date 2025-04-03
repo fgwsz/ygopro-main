@@ -140,3 +140,20 @@ Copyright (C) 2006, 2019 Tatsuhiro Tsujikawa
 ```
 这下运行正常了,重新打开`mycard`,找到`ygopro`介绍页,点击`下载`按键,  
 此时发现可以正常下载了.  
+### [o] 0003
+2025/04/01  
+使用`mycard`下载`mycard ygopro`时下载速度慢,下载到中间(未达到100%)报错:  
+问题原因:  
+用户自己安装的`aria2`和`aria2`配置和`mycard`自带的`aria2`不兼容,  
+`mycard`自带的`aria2`使用了用户的`aria2`配置,  
+而用户的`aria2`配置可能因为没有针对`ygopro`资源进行过优化,  
+因为配置不一致的原因,  
+造成下载慢,下载重试次数不一致,引发下载中断等问题,.  
+解决方式:  
+卸载用户自己安装的`aria2`,并删除`aria2`配置文件.  
+```bash
+sudo apt remove aria2
+sudo rm -rf ~/.config/aria2
+```
+重新启动`mycard`,找到`ygopro`介绍页,点击下载,  
+发现此时下载慢和下载中断的问题消失了.  
