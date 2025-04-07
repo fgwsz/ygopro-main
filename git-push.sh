@@ -20,6 +20,7 @@ if [ "$commit_info" != "q" ]; then
     git add .gitignore
     git add account.csv
     git add duel_servers.csv
+    git add lib_ygopro_launch_with_server.sh
     git add README.md
     git commit -m "$commit_info"
     git push

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
+source "$root_path/lib_ygopro_launch_with_server.sh"
+
 mcpro_path=~/.config/MyCardLibrary/ygopro
 #check mycard ygopro
 if [ ! -e "$mcpro_path" ]; then
@@ -24,8 +26,7 @@ else
     "$deck_path/pull-deck.sh"
 fi
 #run mycard ygopro
-cd "$mcpro_path"
-./ygopro
+ygopro_launch_with_server "$mcpro_path"
 #push deck
 if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
     mv -f "$deck_path"/*.ydk "$deck_path/ocg/"
