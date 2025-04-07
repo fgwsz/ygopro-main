@@ -18,6 +18,8 @@ if [ "$commit_info" != "q" ]; then
     git add install.sh
     git add git-push.sh
     git add .gitignore
+    git add account.csv
+    git add duel_servers.csv
     git add README.md
     git commit -m "$commit_info"
     git push

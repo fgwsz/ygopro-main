@@ -23,8 +23,6 @@ else
     git pull
     "$deck_path/pull-deck.sh"
 fi
-#select duel servers
-#TODO
 #run mycard ygopro
 cd "$mcpro_path"
 ./ygopro
