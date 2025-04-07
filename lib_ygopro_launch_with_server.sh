@@ -18,6 +18,8 @@ read_account(){
         user=$(xargs <<< "$user")
         password=$(xargs <<< "$password")
     } < "$account_file"
+    echo "User: $user"
+    echo "Password: $password"
 }
 select_server(){
     local servers_file="$root_path/duel_servers.csv"
@@ -40,7 +42,8 @@ select_server(){
             host=$(echo "$host" | xargs)
             port=$(echo "$port" | xargs)
             # 构建完整菜单项
-            menu_item=$(printf "\033[32m%-30s\033[0m | Host: \033[32m%-23s\033[0m | Port: \033[32m%-5s\033[0m" \
+            #menu_item=$(printf "\033[32m%-30s\033[0m | Host: \033[32m%-23s\033[0m | Port: \033[32m%-5s\033[0m" \
+            menu_item=$(printf "\033[32m%-30s\033[0m | \033[32m%-33s\033[0m | \033[32m%-6s\033[0m" \
                 "$name" "$host" "$port")
             # 存储配置
             servers+=("$host $port")
@@ -49,10 +52,7 @@ select_server(){
     } < "$servers_file"
     # show menu
     echo "───────────────────────────────────────────────────────────────────────────────"
-    echo "                       用户名 ($user)"
-    echo "                       请选择要连接的服务器 (1-${#menu_options[@]})"
-    echo "───────────────────────────────────────────────────────────────────────────────"
-    echo "Name                          Host                                        Port "
+    echo " Name                              | Host                              | Port  "
     echo "───────────────────────────────────────────────────────────────────────────────"
     for ((i=0; i<${#menu_options[@]}; i++)); do
         printf "%2d) %-76s\n" $((i+1)) "${menu_options[i]}"
@@ -62,6 +62,7 @@ select_server(){
     done
     echo "───────────────────────────────────────────────────────────────────────────────"
     local index=""
+    echo "请选择要连接的服务器"
     while true; do
         read -p "请输入选择数字 (1-${#menu_options[@]},回车自动选择第一个):" choice
         # 处理回车自动选择
