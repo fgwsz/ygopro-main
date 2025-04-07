@@ -10,6 +10,19 @@ YGOPro & MyCard manager in linux system.
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`  
 + 运行`ygopro-ocg/ygopro`  
+## `run-ocg_with_server.sh`
+(OCG环境)  
++ 自动安装/更新`ygopro-ocg`  
++ 自动安装`ocg-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`  
++ 运行`ygopro-ocg/ygopro`  
+    - 可配置用户信息(用户信息存放在`account.csv`)  
+    - 选择服务器信息(服务器信息存放在在`duel_servers.csv`)  
+    - 对已选择服务器进行连接测试  
+    - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
+    - 支持控制台手动输入房间信息  
 ## `run-408.sh`
 (408环境)  
 + 自动安装/更新`ygopro-408`  
@@ -40,6 +53,18 @@ YGOPro & MyCard manager in linux system.
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`  
 + 运行`mycard ygopro`  
+## `run-mcpro_with_server.sh`
+(MyCard OCG环境)  
++ 自动安装`mcpro-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`  
++ 运行`mycard ygopro`  
+    - 可配置用户信息(用户信息存放在`account.csv`)  
+    - 选择服务器信息(服务器信息存放在在`duel_servers.csv`)  
+    - 对已选择服务器进行连接测试  
+    - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
+    - 支持控制台手动输入房间信息  
 ## `update-super-pre.sh`
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`mycard ygopro`  
