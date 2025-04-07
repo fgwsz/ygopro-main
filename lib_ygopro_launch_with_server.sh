@@ -42,7 +42,6 @@ select_server(){
             host=$(echo "$host" | xargs)
             port=$(echo "$port" | xargs)
             # 构建完整菜单项
-            #menu_item=$(printf "\033[32m%-30s\033[0m | Host: \033[32m%-23s\033[0m | Port: \033[32m%-5s\033[0m" \
             menu_item=$(printf "\033[32m%-30s\033[0m | \033[32m%-33s\033[0m | \033[32m%-6s\033[0m" \
                 "$name" "$host" "$port")
             # 存储配置
