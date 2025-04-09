@@ -1,48 +1,16 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
+source "$root_path/lib_download.sh"
 source "$root_path/lib_deck.sh"
 
 ygopro_path="$root_path/install/ygopro.tar.gz"
 ygopro_download_url="https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
-ygopro_remote_size=$(curl -sI "$ygopro_download_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
-download_flag=false
-#check remote ygopro size
-while true; do
-    if [ -z "$ygopro_remote_size" ]; then
-        download_flag=true
-        echo "Unable to retrieve the size of the remote ygopro file."
-        break
-    fi
-    ygopro_remote_size=${ygopro_remote_size% }
-    if [ -f "$ygopro_path" ]; then
-        ygopro_size=$(stat -c%s "$ygopro_path")
-    else
-        download_flag=true
-        echo "install/ygopro file does not exist."
-        break
-    fi
-    if [ "$ygopro_remote_size" -eq "$ygopro_size" ]; then
-        download_flag=false
-        echo "install/ygopro is up to date."
-        break
-    else
-        download_flag=true
-        echo "ygopro has updates available."
-        break
-    fi
-done
+#check remote ygopro update
+check_update "$ygopro_download_url" "$ygopro_path" "ygopro" "install/ygopro"
 #update install/ygopro
-if [ $download_flag = true ]; then
-    while true; do
-        if [[ -e "$ygopro_path" ]]; then
-            rm -rf "$ygopro_path"
-        fi
-        axel -n 20 -o "$ygopro_path" "$ygopro_download_url"
-        if [ $? -eq 0 ]; then
-            break
-        fi
-    done
+if [ $? -eq 1 ]; then
+    download_big_file "$ygopro_download_url" "$ygopro_path"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-ocg/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-408/"
     tar -zxvf "$ygopro_path" -C "$root_path/ygopro-2011_11_11/"
