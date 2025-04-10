@@ -23,15 +23,14 @@ copy_super_pre(){
     if [ $? -eq 1 ]; then
         mkdir_expansions "$ygopro_path"
         cp "$super_pre_path" "$ygopro_ocg_path/expansions/ygopro-super-pre.ypk"
-        echo "$ygopro_path installed new super-pre."
+        echo "Update $ygopro_path super-pre."
     else
-        echo "$ygopro_path has not ygopro, please install."
+        echo "$ygopro_path hasn't ygopro, please install it."
     fi
 }
 update_super_pre(){
     local super_pre_path="$root_path/install/ygopro-super-pre.ypk"
     local super_pre_download_url="https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk"
-    local download_flag=false
     local ygopro_ocg_path="$root_path/ygopro-ocg"
     local mcpro_path=~/.config/MyCardLibrary/ygopro
     #check remote super pre update
@@ -39,9 +38,6 @@ update_super_pre(){
     #update install/super pre
     if [ $? -eq 1 ]; then
         download "$super_pre_download_url" "$super_pre_path"
-        download_flag=true
-    fi
-    if [ $download_flag = true ]; then
         copy_super_pre "$ygopro_ocg_path"
         copy_super_pre "$mcpro_path"
     fi
