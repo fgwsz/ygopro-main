@@ -65,9 +65,6 @@ YGOPro & MyCard manager in linux system.
     - 对已选择服务器进行连接测试  
     - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
     - 支持控制台手动输入房间信息  
-## `update-super-pre.sh`
-+ 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
-+ 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`mycard ygopro`  
 ## `update-ygopro.sh`
 ### 安装/更新`ygopro`
 + 自动安装/更新`ygopro`到`ygopro-ocg`  
@@ -82,7 +79,7 @@ YGOPro & MyCard manager in linux system.
 + 自动同步`deck`远程仓库内容到`ygopro-408/deck/`文件夹  
 + 自动同步`deck`远程仓库内容到`ygopro-2011_11_11/deck/`文件夹  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
-### 安装/更新萌卡超先行卡补丁
+## `update-super-pre.sh`
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`mycard ygopro`  
 ## 已知问题

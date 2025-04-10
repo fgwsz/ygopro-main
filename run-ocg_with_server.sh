@@ -7,6 +7,8 @@ source "$root_path/lib_ygopro_launch_with_server.sh"
 ygopro_ocg_path="$root_path/ygopro-ocg"
 #update ygopro
 "$root_path/update-ygopro.sh"
+#update ygopro-super-pre
+"$root_path/update-super-pre.sh"
 #check ygopro-ocg/deck
 pull_deck "$ygopro_ocg_path"
 #run ygopro-ocg

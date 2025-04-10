@@ -34,7 +34,7 @@ update_super_pre(){
     local download_flag=false
     local ygopro_ocg_path="$root_path/ygopro-ocg"
     local mcpro_path=~/.config/MyCardLibrary/ygopro
-    #check remote supre pre update
+    #check remote super pre update
     check_update "$super_pre_download_url" "$super_pre_path" "super-pre" "install/super-pre"
     #update install/super pre
     if [ $? -eq 1 ]; then
