@@ -8,7 +8,7 @@ run_mcpro_with_server(){
     local mcpro_dir_path=~/.config/MyCardLibrary/ygopro
     local mcpro_path="$mcpro_dir_path/ygopro"
     #check mycard ygopro
-    if [ ! -e "$mcpro_dir_path" ]; then
+    if [ ! -e "$mcpro_path" ]; then
         echo "Please install mycard ygopro!"
         exit 1
     fi
