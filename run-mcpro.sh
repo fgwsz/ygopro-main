@@ -12,7 +12,7 @@ run_mcpro(){
         exit 1
     fi
     #reset mycard ygopro/ext
-    cp -r "$root_path/install/mcpro-ext"/* "$mcpro_dir_path/"
+    cp -rf "$root_path/install/mcpro-ext"/* "$mcpro_dir_path/"
     #update super pre
     "$root_path/update-super-pre.sh"
     #check mycard ygopro/deck

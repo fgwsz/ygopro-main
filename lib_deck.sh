@@ -2,13 +2,13 @@
 
 root_path=$(dirname "$(readlink -f "$0")")
 pull_deck(){
-    local ygopro_path="$1"
-    local deck_path="$ygopro_path/deck"
+    local ygopro_dir_path="$1"
+    local deck_path="$ygopro_dir_path/deck"
     if [[ ! -e "$deck_path/.git" ]]; then
         rm -rf "$deck_path"
-        cd "$ygopro_path"
+        cd "$ygopro_dir_path"
         git clone "git@github.com:fgwsz/ygopro-deck.git"
-        mv "$ygopro_path/ygopro-deck" "$ygopro_path/deck"
+        mv "$ygopro_dir_path/ygopro-deck" "$ygopro_dir_path/deck"
     else
         cd "$deck_path"
         git pull
@@ -16,9 +16,9 @@ pull_deck(){
     fi
 }
 push_deck(){
-    local ygopro_path="$1"
+    local ygopro_dir_path="$1"
     local deck_category="$2"
-    local deck_path="$ygopro_path/deck"
+    local deck_path="$ygopro_dir_path/deck"
     if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
         mv -f "$deck_path"/*.ydk "$deck_path/$deck_category/"
     fi
@@ -36,14 +36,14 @@ pull_install_deck(){
     fi
 }
 copy_install_deck(){
-    local ygopro_path="$1"
+    local ygopro_dir_path="$1"
     local install_deck_path="$root_path/install/ygopro-deck"
-    rm -rf "$ygopro_path/deck"
-    cp -r "$install_deck_path" "$ygopro_path/deck"
+    rm -rf "$ygopro_dir_path/deck"
+    cp -rf "$install_deck_path" "$ygopro_dir_path/deck"
 }
 reset_deck(){
-    local ygopro_path="$1"
+    local ygopro_dir_path="$1"
     local install_deck_path="$root_path/install/ygopro-deck"
     pull_install_deck
-    copy_install_deck "$ygopro_path"
+    copy_install_deck "$ygopro_dir_path"
 }

@@ -2,6 +2,7 @@
 
 root_path=$(dirname "$(readlink -f "$0")")
 source "$root_path/lib_deck.sh"
+source "$root_path/lib_mdpro3_deck.sh"
 
 run_mycard(){
     #check install/mycard-main
@@ -12,20 +13,31 @@ run_mycard(){
         "$mycard_main_path/install.sh"
         "$mycard_main_path/build.sh"
     fi
-    #check mycard ygopro
+
     local mcpro_dir_path=~/.config/MyCardLibrary/ygopro
     local mcpro_path="$mcpro_dir_path/ygopro"
-    if [ ! -e "$mcpro_path" ]; then
-        "$mycard_main_path/run.sh"
-        exit 1
-    fi
-    #update super pre
+    local mdpro3_dir_path=~/.config/MyCardLibrary/mdpro3
+    local mdpro3_path="$mdpro3_dir_path/MDPro3"
+
+    # update super pre
     "$root_path/update-super-pre.sh"
-    #check mycard ygopro/deck
-    pull_deck "$mcpro_dir_path"
+    #pull mycard mcpro deck
+    if [ -e "$mcpro_path" ]; then
+        pull_deck "$mcpro_dir_path"
+    fi
+    #pull mycard mdpro3 deck
+    if [ -e "$mdpro3_path" ]; then
+        pull_mdpro3_deck "$mdpro3_dir_path"
+    fi
     #run mycard
     "$mycard_main_path/run.sh"
-    #push deck
-    push_deck "$mcpro_dir_path" "ocg"
+    #push mycard mcpro deck
+    if [ -e "$mcpro_path" ]; then
+        push_deck "$mcpro_dir_path" "ocg"
+    fi
+    #push mycard mdpro3 deck
+    if [ -e "$mdpro3_path" ]; then
+        push_mdpro3_deck "$mdpro3_dir_path"
+    fi
 }
 run_mycard
