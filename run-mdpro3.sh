@@ -12,7 +12,7 @@ run_mdpro3(){
         exit 1
     fi
     #reset mycard mdpro3/ext
-    #cp -r "$root_path/install/mdpro3-ext"/* "$mdpro3_dir_path/"
+    cp -rf "$root_path/install/mdpro3-ext"/* "$mdpro3_dir_path/"
     #update super pre
     "$root_path/update-super-pre.sh"
     #check mycard mdpro3 deck

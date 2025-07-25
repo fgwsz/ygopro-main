@@ -7,6 +7,7 @@ if [ "$commit_info" != "q" ]; then
     cd "$root_path"
     git add install/ocg-ext/*
     git add install/mcpro-ext/*
+    git add install/mdpro3-ext/*
     git add install/408-ext/*
     git add install/2011_11_11-ext/*
     git add install/.gitignore
