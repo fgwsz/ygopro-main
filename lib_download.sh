@@ -12,7 +12,8 @@ check_update(){
     local retry_count=0
     # 网络重试机制
     while [ $retry_count -lt $max_retries ]; do
-        remote_size=$(curl -sI "$remote_url" | grep -i Content-Length | awk '{print $2}' | tr -d '\r')
+        remote_size=$(curl -sIL "$remote_url" | grep -i "Content-Length" | tail -1 | awk '{print $2}' | tr -d '\r')
+        #echo "remote_size:$remote_size"
         if [ $? -eq 0 ]; then
             break
         else
