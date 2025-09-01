@@ -62,7 +62,7 @@ download_big_file(){
         if [[ -e "$local_path" ]]; then
             rm -rf "$local_path"
         fi
-        axel -n 20 -o "$local_path" "$remote_url"
+        axel -n 8 -o "$local_path" "$remote_url"
         if [ $? -eq 0 ]; then
             break
         fi
