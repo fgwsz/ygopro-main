@@ -12,6 +12,9 @@ run_mycard(){
         git clone "git@github.com:fgwsz/mycard-main.git"
         "$mycard_main_path/install.sh"
         "$mycard_main_path/build.sh"
+    else
+        cd "$mycard_main_path"
+        git pull
     fi
 
     local mcpro_dir_path=~/.config/MyCardLibrary/ygopro
