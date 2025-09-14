@@ -1,6 +1,7 @@
 #!/bin/bash
 
 root_path=$(dirname "$(readlink -f "$0")")
+source "$root_path/lib_deck.sh"
 
 run_mdpro3(){
     local mdpro3_dir_path=~/.config/MyCardLibrary/mdpro3
@@ -14,8 +15,12 @@ run_mdpro3(){
     cp -rf "$root_path/install/mdpro3-ext"/* "$mdpro3_dir_path/"
     #update super pre
     "$root_path/update-super-pre.sh"
+    #check mdpro3/deck
+    pull_mdpro3_deck "$mdpro3_dir_path"
     #run mycard mdpro3
     cd "$mdpro3_dir_path"
     ./MDPro3
+    #push deck
+    push_mdpro3_deck "$mdpro3_dir_path"
 }
 run_mdpro3

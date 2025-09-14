@@ -72,6 +72,8 @@ YGOPro & MyCard manager in linux system.
 ## `run-mdpro3.sh`
 (MyCard OCG环境)  
 + 自动安装`mdpro3-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`Deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`  
 + 运行`mycard mdpro3`  
 ## `update-ygopro.sh`

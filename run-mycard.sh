@@ -18,6 +18,8 @@ run_mycard(){
 
     local mcpro_dir_path=~/.config/MyCardLibrary/ygopro
     local mcpro_path="$mcpro_dir_path/ygopro"
+    local mdpro3_dir_path=~/.config/MyCardLibrary/mdpro3
+    local mdpro3_path="$mdpro3_dir_path/MDPro3"
 
     # update super pre
     "$root_path/update-super-pre.sh"
@@ -25,11 +27,19 @@ run_mycard(){
     if [ -e "$mcpro_path" ]; then
         pull_deck "$mcpro_dir_path"
     fi
+    #pull mycard mdpro3 deck
+    if [ -e "$mdpro3_path" ]; then
+        pull_mdpro3_deck "$mdpro3_dir_path"
+    fi
     #run mycard
     "$mycard_main_path/run.sh"
     #push mycard mcpro deck
     if [ -e "$mcpro_path" ]; then
         push_deck "$mcpro_dir_path" "ocg"
+    fi
+    #push mycard mdpro3 deck
+    if [ -e "$mdpro3_path" ]; then
+        push_mdpro3_deck "$mdpro3_dir_path"
     fi
 }
 run_mycard

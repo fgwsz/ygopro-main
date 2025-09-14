@@ -15,6 +15,20 @@ pull_deck(){
         "$deck_path/pull-deck.sh"
     fi
 }
+pull_mdpro3_deck(){
+    local mdpro3_dir_path="$1"
+    local deck_path="$mdpro3_dir_path/ygopro-deck"
+    if [[ ! -e "$deck_path" ]]; then
+        cd "$mdpro3_dir_path"
+        git clone "git@github.com:fgwsz/ygopro-deck.git"
+    else
+        cd "$deck_path"
+        git pull
+        "$deck_path/pull-deck.sh"
+    fi
+    rm -rf "$mdpro3_dir_path/Deck"/*.ydk
+    cp -rf "$deck_path/mdpro3"/*.ydk "$mdpro3_dir_path/Deck/"
+}
 push_deck(){
     local ygopro_dir_path="$1"
     local deck_category="$2"
@@ -22,6 +36,13 @@ push_deck(){
     if find "$deck_path" -maxdepth 1 -type f -name "*.ydk" | grep -q .; then
         mv -f "$deck_path"/*.ydk "$deck_path/$deck_category/"
     fi
+    "$deck_path/push-deck.sh"
+}
+push_mdpro3_deck(){
+    local mdpro3_dir_path="$1"
+    local deck_path="$mdpro3_dir_path/ygopro-deck"
+    rm -rf "$deck_path/mdpro3"/*.ydk
+    cp -rf "$mdpro3_dir_path/Deck"/*.ydk "$deck_path/mdpro3/"
     "$deck_path/push-deck.sh"
 }
 pull_install_deck(){
