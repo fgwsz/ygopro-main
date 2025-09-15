@@ -26,8 +26,7 @@ pull_mdpro3_deck(){
         git pull
         "$deck_path/pull-deck.sh"
     fi
-    rm -rf "$mdpro3_dir_path/Deck"/*.ydk
-    cp -rf "$deck_path/mdpro3"/*.ydk "$mdpro3_dir_path/Deck/"
+    rsync -avzh --delete "$deck_path/mdpro3/" "$mdpro3_dir_path/Deck/"
 }
 push_deck(){
     local ygopro_dir_path="$1"
@@ -41,8 +40,7 @@ push_deck(){
 push_mdpro3_deck(){
     local mdpro3_dir_path="$1"
     local deck_path="$mdpro3_dir_path/ygopro-deck"
-    rm -rf "$deck_path/mdpro3"/*.ydk
-    cp -rf "$mdpro3_dir_path/Deck"/*.ydk "$deck_path/mdpro3/"
+    rsync -avzh --delete "$mdpro3_dir_path/Deck/" "$deck_path/mdpro3/"
     "$deck_path/push-deck.sh"
 }
 pull_install_deck(){
