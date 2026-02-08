@@ -23,6 +23,7 @@ if [ "$commit_info" != "q" ]; then
     git add duel_servers.csv
     git add lib_*.sh
     git add README.md
+    git add bug-fix-note.txt
     git commit -m "$commit_info"
     git push
 fi
