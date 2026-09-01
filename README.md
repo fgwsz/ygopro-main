@@ -49,6 +49,25 @@ YGOPro & MyCard manager in linux system.
     - 对已选择服务器进行连接测试  
     - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
     - 支持控制台手动输入房间信息  
+## `run-706.sh`
+(706环境)  
++ 自动安装/更新`ygopro-706`  
++ 自动安装`706-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 运行`ygopro-706/ygopro`  
+## `run-706_with_server.sh`
+(706环境)  
++ 自动安装/更新`ygopro-706`  
++ 自动安装`706-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 运行`ygopro-706/ygopro`  
+    - 可配置用户信息(用户信息存放在`account.csv`)  
+    - 选择服务器信息(服务器信息存放在在`duel_servers.csv`)  
+    - 对已选择服务器进行连接测试  
+    - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
+    - 支持控制台手动输入房间信息  
 ## `run-mycard.sh`
 (MyCard OCG环境)  
 + 自动校检`mycard`完整性(若未安装则自动下载安装)  
@@ -92,14 +111,17 @@ YGOPro & MyCard manager in linux system.
 + 自动安装/更新`ygopro`到`ygopro-ocg`  
 + 自动安装/更新`ygopro`到`ygopro-408`  
 + 自动安装/更新`ygopro`到`ygopro-2011_11_11`  
++ 自动安装/更新`ygopro`到`ygopro-706`  
 ### 安装配置信息
 + 自动安装`ocg-ext`配置信息到`ygopro-ocg`  
 + 自动安装`408-ext`配置信息到`ygopro-408`  
 + 自动安装`2011_11_11-ext`配置信息到`ygopro-2011_11_11`  
++ 自动安装`706-ext`配置信息到`ygopro-706`  
 ### 同步卡组信息
 + 自动同步`deck`远程仓库内容到`ygopro-ocg/deck/`文件夹  
 + 自动同步`deck`远程仓库内容到`ygopro-408/deck/`文件夹  
 + 自动同步`deck`远程仓库内容到`ygopro-2011_11_11/deck/`文件夹  
++ 自动同步`deck`远程仓库内容到`ygopro-706/deck/`文件夹  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 ## `update-super-pre.sh`
 + 自动安装/更新萌卡超先行卡补丁`ygopro-super-pre.ypk`到`ygopro-ocg/ygopro`  
