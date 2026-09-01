@@ -29,10 +29,12 @@ update_ygopro(){
         reset_ygopro "ocg"
         reset_ygopro "408"
         reset_ygopro "2011_11_11"
+        reset_ygopro "706"
     else
         check_and_reset_ygopro "ocg"
         check_and_reset_ygopro "408"
         check_and_reset_ygopro "2011_11_11"
+        check_and_reset_ygopro "706"
     fi
 }
 update_ygopro
