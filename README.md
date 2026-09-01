@@ -37,10 +37,21 @@ YGOPro & MyCard manager in linux system.
 + 自动同步`deck`远程仓库内容到`deck/`文件夹  
     - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
 + 运行`ygopro-2011_11_11/ygopro`  
+## `run-2011_11_11_with_server.sh`
+(2011.11.11环境)  
++ 自动安装/更新`ygopro-2011_11_11`  
++ 自动安装`2011_11_11-ext`配置信息  
++ 自动同步`deck`远程仓库内容到`deck/`文件夹  
+    - `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  
++ 运行`ygopro-2011_11_11/ygopro`  
+    - 可配置用户信息(用户信息存放在`account.csv`)  
+    - 选择服务器信息(服务器信息存放在在`duel_servers.csv`)  
+    - 对已选择服务器进行连接测试  
+    - 选择最近10个(不重复的)历史房间信息(历史房间信息存放在`room_history.csv`)  
+    - 支持控制台手动输入房间信息  
 ## `run-mycard.sh`
 (MyCard OCG环境)  
 + 自动校检`mycard`完整性(若未安装则自动下载安装)  
-    - `mycard`远程仓库<https://github.com/fgwsz/mycard-main>  
 + 若已使用`mycard`客户端安装了`mycard ygopro`  
     - 自动同步`deck`远程仓库内容到`mycard ygopro/deck/`文件夹  
         + `deck`远程仓库<https://github.com/fgwsz/ygopro-deck>  

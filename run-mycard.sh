@@ -6,7 +6,7 @@ source "$root_path/lib_download.sh"
 
 run_mycard(){
     #check install/mycard
-    local mycard_download_url="https://cdntx.moecube.com/downloads/MyCard-3.0.85.AppImage"
+    local mycard_download_url="https://cdntx.moecube.com/downloads/MyCard-3.0.87.AppImage"
     local mycard_path="$root_path/install/mycard.AppImage"
     check_update "$mycard_download_url" "$mycard_path" "mycard" "install/mycard"
     if [ $? -eq 1 ]; then
