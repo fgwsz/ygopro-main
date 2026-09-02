@@ -24,6 +24,7 @@ if [ "$commit_info" != "q" ]; then
     git add account.csv
     git add duel_servers.csv
     git add lib_*.sh
+    git add 706_TT_server.url
     git add README.md
     git commit -m "$commit_info"
     git push
